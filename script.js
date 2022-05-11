@@ -8,13 +8,10 @@ addToDoButton.addEventListener("click", function() {
     paragraph.innerText = inputField.value;
     toDoContainer.appendChild(paragraph);
     inputField.value = "";
-    inputField.onkeypress = handleKeyPress;
+    paragraph.addEventListener("click", function() {
+        paragraph.style.textDecoration = "line-through";
+    })
+    paragraph.addEventListener("dblclick", function() {
+        toDoContainer.removeChild(paragraph);
+    })
 })
-
-function handleKeyPress(e) {
-    let addToDoButton = document.getElementById("addToDo");
-    if (e.keyCode === 13) {
-        addToDo.click();
-        return false;
-    }
-};
